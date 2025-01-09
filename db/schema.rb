@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_05_151650) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_09_142943) do
+  create_table "rss_subscriptions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "url_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["url_id"], name: "index_rss_subscriptions_on_url_id"
+    t.index ["user_id"], name: "index_rss_subscriptions_on_user_id"
+  end
+
+  create_table "rss_urls", force: :cascade do |t|
+    t.text "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -28,5 +43,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_05_151650) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "rss_subscriptions", "urls"
+  add_foreign_key "rss_subscriptions", "users"
   add_foreign_key "sessions", "users"
 end

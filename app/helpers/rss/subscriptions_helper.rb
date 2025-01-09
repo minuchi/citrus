@@ -1,0 +1,2 @@
+module Rss::SubscriptionsHelper
+end

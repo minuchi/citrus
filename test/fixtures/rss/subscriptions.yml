@@ -2,8 +2,8 @@
 
 one:
   user: one
-  url: one
+  rss_url: one
 
 two:
   user: two
-  url: two
+  rss_url: two

@@ -2,12 +2,13 @@ class Rss::SubscriptionsController < ApplicationController
   before_action :set_current_user
 
   def index
-    @subscriptions = Rss::Subscription.where(user: @current_user)
+    @subscriptions = @current_user.rss_subscriptions
   end
 
   def new
     @subscription = Rss::Subscription.new
-    @urls = Rss::Url.all
+    subscribed_url_ids = @current_user.rss_subscriptions.pluck(:rss_url_id)
+    @urls = Rss::Url.where.not(id: subscribed_url_ids)
   end
 
   def create

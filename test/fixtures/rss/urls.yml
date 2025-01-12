@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  url: MyText
+hackernews:
+  url: https://news.ycombinator.com/rss
 
-two:
-  url: MyText
+geeknews:
+  url: https://feeds.feedburner.com/geeknews-feed

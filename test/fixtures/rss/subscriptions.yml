@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+onehack:
   user: one
-  rss_url: one
+  rss_url: hackernews
 
-two:
+onegeek:
+  user: one
+  rss_url: geeknews
+
+twogeek:
   user: two
-  rss_url: two
+  rss_url: geeknews

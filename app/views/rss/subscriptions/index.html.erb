@@ -1,11 +1,19 @@
-<h1>Rss::Subscriptions#index</h1>
-
+<h1>RSS Subscriptions</h1>
 <div>
   <%= link_to "New Subscription", new_rss_subscription_path %>
 </div>
-
-<ul id="rss-subscriptions">
-  <% @subscriptions.each do |subscription| %>
-    <li><%= subscription.rss_url.url %></li>
-  <% end %>
-</ul>
+<div id="rss-subscriptions">
+  <ul>
+    <% @subscriptions.each do |subscription| %>
+      <li style="display: flex">
+        <span><%= subscription.rss_url.url %></span>
+        <%= button_to "Delete",
+        subscription,
+        method: :delete,
+        data: {
+          turbo_confirm: "Are you sure?",
+        } %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -4,11 +4,11 @@
 </div>
 <div id="rss-subscriptions">
   <ul>
-    <% @subscriptions.each do |subscription| %>
+    <% @rss_subscriptions.each do |rss_subscription| %>
       <li style="display: flex">
-        <span><%= subscription.rss_url.url %></span>
+        <span><%= rss_subscription.rss_url.url %></span>
         <%= button_to "Delete",
-        subscription,
+        rss_subscription,
         method: :delete,
         data: {
           turbo_confirm: "Are you sure?",

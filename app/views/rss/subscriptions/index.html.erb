@@ -1,2 +1,11 @@
 <h1>Rss::Subscriptions#index</h1>
-<p>Find me in app/views/rss/subscriptions/index.html.erb</p>
+
+<div>
+  <%= link_to "New Subscription", new_rss_subscription_path %>
+</div>
+
+<ul id="rss-subscriptions">
+  <% @subscriptions.each do |subscription| %>
+    <li><%= subscription.rss_url.url %></li>
+  <% end %>
+</ul>

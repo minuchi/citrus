@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_11_024836) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_12_042407) do
   create_table "rss_subscriptions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "rss_url_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rss_url_id"], name: "index_rss_subscriptions_on_rss_url_id"
+    t.index ["user_id", "rss_url_id"], name: "index_rss_subscriptions_on_user_id_and_rss_url_id", unique: true
     t.index ["user_id"], name: "index_rss_subscriptions_on_user_id"
   end
 
@@ -24,6 +25,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_11_024836) do
     t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_rss_urls_on_url", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|

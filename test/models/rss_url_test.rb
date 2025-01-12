@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Rss::UrlTest < ActiveSupport::TestCase
+class RssUrlTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

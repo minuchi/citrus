@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "rss/subscriptions#index"
-  namespace :rss do
-    resources :subscriptions, only: [ :index, :new, :create, :destroy ]
-  end
+  root "rss_subscriptions#index"
+  resources :rss_subscriptions, only: [ :index, :new, :create, :destroy ]
 end

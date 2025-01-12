@@ -1,0 +1,2 @@
+class RssUrl < ApplicationRecord
+end

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Rss::SubscriptionsControllerTest < ActionDispatch::IntegrationTest
+class RssSubscriptionsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

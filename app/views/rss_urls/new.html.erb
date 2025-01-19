@@ -1,12 +1,40 @@
 <h1>RSS URLs</h1>
 <div>
   <%= form_with model: @rss_url do |form| %>
+    <% if @rss_url.errors.any? %>
+      <div class="error-messages" role="alert" aria-label="Form errors">
+        <% @rss_url.errors.full_messages.each do |message| %>
+          <p class="error-message"><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
     <div>
       <%= form.label :url, "URL" %>
-      <%= form.url_field :url %>
+      <%= form.url_field :url,
+          required: true,
+          aria: { 
+            invalid: @rss_url.errors[:url].any?,
+            required: true 
+          },
+          placeholder: "https://example.com/feed.xml" %>
     </div>
     <div>
       <%= form.submit %>
     </div>
   <% end %>
 </div>
+
+<style>
+  .error-messages {
+    background-color: #fde8e8;
+    border: 1px solid #f8b4b4;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+
+  .error-message {
+    color: #e02424;
+    margin: 4px 0;
+  }
+</style>

@@ -10,11 +10,25 @@ class RssUrlsController < ApplicationController
   end
 
   def create
-    @rss_url = RssUrl.new(rss_url_params)
-    if @rss_url.save
-      redirect_to rss_urls_path
-    else
-      render :new, status: :unprocessable_entity
+    @rss_url = RssUrl.new
+    begin
+      url = rss_url_params[:url]
+      RSS::Parser.parse(URI.open(url))
+      @rss_url = RssUrl.new(rss_url_params)
+      if @rss_url.save
+        redirect_to rss_urls_path
+      else
+        render :new, status: :unprocessable_entity
+      end
+    rescue OpenURI::HTTPError
+      @rss_url.errors.add(:url, "is not accessible. Please check if the URL is correct")
+      render :new, status: :bad_request
+    rescue RSS::NotWellFormedError
+      @rss_url.errors.add(:url, "is not a valid RSS feed")
+      render :new, status: :bad_request
+    rescue URI::InvalidURIError
+      @rss_url.errors.add(:url, "is invalid")
+      render :new, status: :bad_request
     end
   end
 

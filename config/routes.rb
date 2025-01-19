@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "rss_subscriptions#index"
-  resources :rss_subscriptions, only: [ :index, :new, :create, :destroy ]
-  resources :rss_urls, only: [ :index, :new, :create, :destroy ]
+  resources :rss_subscriptions, path: "rss/subscriptions", only: [ :index, :new, :create, :destroy ]
+  resources :rss_urls, path: "rss/urls", only: [ :index, :new, :create, :destroy ]
 end

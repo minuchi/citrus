@@ -1,2 +1,14 @@
-<h1>RssUrl#index</h1>
-<p>Find me in app/views/rss_url/index.html.erb</p>
+<h1>RSS URLs</h1>
+<div>
+  <%= link_to "New URL", new_rss_url_path %>
+</div>
+<div id="rss-urls">
+  <ul>
+    <% @rss_urls.each do |rss_url| %>
+      <li style="display: flex">
+        <span><%= rss_url.url %></span>
+        <%= button_to "Delete", rss_url, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+</div>

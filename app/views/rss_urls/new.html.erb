@@ -1,2 +1,12 @@
-<h1>RssUrl#new</h1>
-<p>Find me in app/views/rss_url/new.html.erb</p>
+<h1>RSS URLs</h1>
+<div>
+  <%= form_with model: @rss_url do |form| %>
+    <div>
+      <%= form.label :url, "URL" %>
+      <%= form.url_field :url %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

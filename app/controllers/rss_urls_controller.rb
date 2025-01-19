@@ -12,7 +12,7 @@ class RssUrlsController < ApplicationController
   def create
     @rss_url = RssUrl.new(rss_url_params)
     if @rss_url.save
-      redirect_to rss_url_index_path
+      redirect_to rss_urls_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,6 +20,8 @@ class RssUrlsController < ApplicationController
 
   def destroy
     @rss_url = RssUrl.find(params[:id])
+    @rss_url.destroy
+    redirect_to rss_urls_path
   end
 
   private

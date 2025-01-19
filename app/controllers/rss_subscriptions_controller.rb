@@ -27,11 +27,12 @@ class RssSubscriptionsController < ApplicationController
   end
 
   private
-    def set_current_user
-      @current_user ||= Current.session.user if Current.session
-    end
 
-    def rss_subscription_params
-      params.expect([ rss_subscription: [ :rss_url_id ] ])
-    end
+  def set_current_user
+    @current_user ||= Current.session.user if Current.session
+  end
+
+  def rss_subscription_params
+    params.expect([ rss_subscription: [ :rss_url_id ] ])
+  end
 end

@@ -63,3 +63,5 @@ group :test do
 end
 
 gem "rss", "~> 0.3.1"
+
+gem "line-bot-api", "~> 1.29"

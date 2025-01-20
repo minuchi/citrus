@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   root "rss_subscriptions#index"
   resources :rss_subscriptions, path: "rss/subscriptions", only: [ :index, :new, :create, :destroy ]
   resources :rss_urls, path: "rss/urls", only: [ :index, :new, :create, :destroy ]
+  post "events/line" => "events#line", as: :callback_line
 end
